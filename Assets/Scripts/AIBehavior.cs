@@ -6,6 +6,7 @@ public class AIBehavior : MonoBehaviour
 {
     [SerializeField] Transform _startPos;
     [SerializeField] Transform _endPos;
+    [SerializeField] Transform _spawnPos;
     [SerializeField]
     Transform[] _path;
     [SerializeField] int _currentPath = 0;
@@ -18,6 +19,8 @@ public class AIBehavior : MonoBehaviour
         {
             Debug.Log("Agent is null");
         }
+        this.gameObject.transform.position = _spawnPos.position;
+        _agent.speed = UnityEngine.Random.Range(4f, 8f);
     }
 
     void Update()
@@ -34,6 +37,14 @@ public class AIBehavior : MonoBehaviour
         if (_agent.remainingDistance < .5f)
         {
             _currentPath += 1;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "End")
+        {
+            gameObject.SetActive(false);
         }
     }
 }
