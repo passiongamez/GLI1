@@ -2,13 +2,16 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager spawnManager;
     [SerializeField] List<GameObject> _enemies = new List<GameObject>();
     [SerializeField] int _spawnCount = 0;
-    WaitForSeconds _spawnTime = new WaitForSeconds(2f);
+    WaitForSeconds _spawnTime = new WaitForSeconds(4f);
+    float _spawnRate = -1;
+    float _spawnDelay = 4;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,13 +24,17 @@ public class SpawnManager : MonoBehaviour
         {
             Destroy(spawnManager);
         }
-        StartCoroutine(SpawnEnemies());
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(_spawnRate < Time.time)
+        {
+            _spawnRate += Time.time + _spawnDelay;
+            Debug.Log("Spawning");
+            StartCoroutine(SpawnEnemies());
+        }
     }
 
     IEnumerator SpawnEnemies()
