@@ -26192,7 +26192,7 @@ NavMeshAgent:
   m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 0
+  avoidancePriority: 7
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -26248,7 +26248,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!4 &1026380711 stripped
 Transform:
@@ -26568,7 +26568,7 @@ NavMeshAgent:
   m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 0
+  avoidancePriority: 2
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -26624,7 +26624,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1001 &1035781151
 PrefabInstance:
@@ -28014,7 +28014,7 @@ NavMeshAgent:
   m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 0
+  avoidancePriority: 4
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -28070,7 +28070,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &1083001149
 GameObject:
@@ -34230,10 +34230,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1948499376550253204, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: f10e392824b77854e9373522eee4405c, type: 2}
+    - target: {fileID: 2204925383202385443, guid: 5e78087452bf213438f19356089c5e81, type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
       propertyPath: _endPos
       value: 
@@ -34246,14 +34246,6 @@ PrefabInstance:
       propertyPath: _startPos
       value: 
       objectReference: {fileID: 444954787}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: _path.Array.size
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: _columns.Array.size
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
       propertyPath: '_path.Array.data[0]'
       value: 
@@ -34318,70 +34310,6 @@ PrefabInstance:
       propertyPath: '_path.Array.data[15]'
       value: 
       objectReference: {fileID: 442946220}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2028371602}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[1]'
-      value: 
-      objectReference: {fileID: 43583177}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[2]'
-      value: 
-      objectReference: {fileID: 735347846}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[3]'
-      value: 
-      objectReference: {fileID: 1695734505}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[4]'
-      value: 
-      objectReference: {fileID: 1641037419}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[5]'
-      value: 
-      objectReference: {fileID: 1045294920}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[6]'
-      value: 
-      objectReference: {fileID: 1450403596}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[7]'
-      value: 
-      objectReference: {fileID: 1403535713}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[8]'
-      value: 
-      objectReference: {fileID: 1956188132}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[9]'
-      value: 
-      objectReference: {fileID: 1713652042}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[10]'
-      value: 
-      objectReference: {fileID: 1658266694}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[11]'
-      value: 
-      objectReference: {fileID: 1837290214}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[12]'
-      value: 
-      objectReference: {fileID: 1178970087}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[13]'
-      value: 
-      objectReference: {fileID: 863357237}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[14]'
-      value: 
-      objectReference: {fileID: 1801463686}
-    - target: {fileID: 4787610343117743206, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      propertyPath: '_columns.Array.data[15]'
-      value: 
-      objectReference: {fileID: 485203647}
     - target: {fileID: 5843113372050523141, guid: 5e78087452bf213438f19356089c5e81, type: 3}
       propertyPath: m_Name
       value: Monster_99
@@ -34393,92 +34321,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5843113372050523141, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1277521662}
-    - targetCorrespondingSourceObject: {fileID: 5843113372050523141, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1277521663}
-    - targetCorrespondingSourceObject: {fileID: 5843113372050523141, guid: 5e78087452bf213438f19356089c5e81, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1277521664}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e78087452bf213438f19356089c5e81, type: 3}
 --- !u!4 &1277521659 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 231999534698326300, guid: 5e78087452bf213438f19356089c5e81, type: 3}
   m_PrefabInstance: {fileID: 1277521658}
   m_PrefabAsset: {fileID: 0}
---- !u!195 &1277521662
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 985874789}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 1
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 0
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 13
-  m_ObstacleAvoidanceType: 4
---- !u!65 &1277521663
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 985874789}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1.86, z: 1}
-  m_Center: {x: 0, y: 0.89, z: 0}
---- !u!54 &1277521664
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 985874789}
-  serializedVersion: 4
-  m_Mass: 3
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &1280253990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43794,7 +43643,7 @@ NavMeshAgent:
   m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 0
+  avoidancePriority: 8
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -43850,7 +43699,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!4 &1571344832 stripped
 Transform:
@@ -45488,7 +45337,7 @@ NavMeshAgent:
   m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 0
+  avoidancePriority: 3
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -45544,7 +45393,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1001 &1630898869
 PrefabInstance:
@@ -51662,7 +51511,7 @@ NavMeshAgent:
   m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 0
+  avoidancePriority: 5
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -51718,7 +51567,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1001 &1875530322
 PrefabInstance:
@@ -53227,7 +53076,7 @@ NavMeshAgent:
   m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 0
+  avoidancePriority: 6
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -53283,7 +53132,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1001 &1919435550
 PrefabInstance:
@@ -55071,7 +54920,7 @@ NavMeshAgent:
   m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 0
+  avoidancePriority: 1
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -55127,7 +54976,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1001 &1969057907
 PrefabInstance:
@@ -55524,7 +55373,7 @@ NavMeshAgent:
   m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 0
+  avoidancePriority: 9
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -55580,7 +55429,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1001 &1974404419
 PrefabInstance:

@@ -26,9 +26,9 @@ public class AIBehavior : MonoBehaviour
     AIStates _currentState;
     [SerializeField] int _trueOrFalse;
 
-    bool _isRunning = true;
-    bool _isHiding = false;
-    bool _isDead = false;
+    [SerializeField] bool _isRunning = true;
+    [SerializeField] bool _isHiding = false;
+    [SerializeField] bool _isDead = false;
 
     WaitForSeconds _hideTime = new WaitForSeconds(3);
 
@@ -72,6 +72,7 @@ public class AIBehavior : MonoBehaviour
         {
             Debug.Log("Animator is null");
         }
+        _agent.enabled = false;
         _isRunning = true;
     }
 
@@ -86,13 +87,15 @@ public class AIBehavior : MonoBehaviour
                     {
                         Debug.Log("Running");
                         SetPath();
-                        if(_agent.speed >= .1f)
+                        if(_agent.speed < 3f)
                         {
                             _animator.SetFloat("Speed", .1f);
+                            _animator.SetBool("Hiding", false);
                         }
                         if(_agent.speed >= 3f)
                         {
                             _animator.SetFloat("Speed", 3f);
+                            _animator.SetBool("Hiding", false);
                         }
                     }
                     _isHiding = false;
@@ -103,6 +106,7 @@ public class AIBehavior : MonoBehaviour
                 if(_isHiding == true)
                 {
                     Debug.Log("Calling hide method");
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
                     _animator.SetBool("Hiding", true);
                 }
                 _isRunning = false;
@@ -113,6 +117,7 @@ public class AIBehavior : MonoBehaviour
                 {
                     Debug.Log("Enemy has died");
                     _animator.SetTrigger("Death");
+                    _animator.SetBool("Hiding", false);
                 }
                 _isRunning = false;
                 _isHiding = false;
@@ -163,7 +168,7 @@ public class AIBehavior : MonoBehaviour
                 _column.IsOccupied();
                 _currentState = AIStates.Hide;
                 _isHiding = true;
-                _agent.isStopped = true;
+                _agent.enabled = false;
                 StartCoroutine(WaitAtColumn());
             }
 
@@ -179,7 +184,7 @@ public class AIBehavior : MonoBehaviour
         Vector3.MoveTowards(transform.position, _currentColumn.position + new Vector3(1f, 0, -1f), 2f);
         yield return _hideTime;
         _isHiding = false;
-        _agent.isStopped = false;
+        _agent.enabled = true;
         _currentState = AIStates.Run;
         _isRunning = true;
         _column.Vacant();
@@ -193,7 +198,6 @@ public class AIBehavior : MonoBehaviour
         _isRunning = false;
         _isHiding = false;
         _currentState = AIStates.Death;
-        _agent.isStopped = false;
         _agent.enabled = false;
         StartCoroutine(DeathWait());
     }
