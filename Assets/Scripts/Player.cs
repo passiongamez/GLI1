@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform _rayPosition;
 
     AIBehavior _enemyScript;
+    UIManager _uiManager;
 
     Camera _mainCam;
 
@@ -24,13 +25,20 @@ public class Player : MonoBehaviour
         {
             Debug.Log("camera is null");
         }
+
+        _uiManager = FindFirstObjectByType<UIManager>();
+        if( _uiManager == null)
+        {
+            Debug.Log("ui manager is null");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame && _canFire < Time.time)
+        if (Mouse.current.leftButton.wasPressedThisFrame && _canFire < Time.time && _uiManager._ammo > 0)
         {
+            _uiManager._ammo -= 1;
             Fire();
         }
 

@@ -34,18 +34,13 @@ public class AIBehavior : MonoBehaviour
 
     Column _column;
     GameManager _gameManager;
+    UIManager _uiManager;
 
     Collider _collider;
     Animator _animator;
 
 
     private void OnEnable()
-    {
-        gameObject.transform.position = _spawnPos.position;
-    }
-
-
-    void Start()
     {
         _hideTime = new WaitForSeconds(Random.Range(3, 5));
 
@@ -68,12 +63,27 @@ public class AIBehavior : MonoBehaviour
         }
 
         _animator = GetComponent<Animator>();
-        if(_animator == null)
+        if (_animator == null)
         {
             Debug.Log("Animator is null");
         }
+
+        _uiManager = FindFirstObjectByType<UIManager>();
+        if (_uiManager == null)
+        {
+            Debug.Log("ui manager is null");
+
+        }
         _agent.enabled = false;
         _isRunning = true;
+        AddEnemyCount();
+        gameObject.transform.position = _spawnPos.position;
+    }
+
+
+    void Start()
+    {
+
     }
 
     void Update()
@@ -142,6 +152,7 @@ public class AIBehavior : MonoBehaviour
         if(other.tag == "End")
         {
             _agent.enabled = false;
+            _uiManager.EnemiesRemainingMinus(1);
             gameObject.SetActive(false);
         }
 
@@ -192,7 +203,7 @@ public class AIBehavior : MonoBehaviour
 
     public void Death()
     {
-        _gameManager.AddPoints(50);
+        _uiManager.AddScore(50);
         _collider.enabled = false;
         _isDead = true;
         _isRunning = false;
@@ -205,6 +216,12 @@ public class AIBehavior : MonoBehaviour
     IEnumerator DeathWait()
     {
         yield return new WaitForSeconds(3f);
+        _uiManager.EnemiesRemainingMinus(1);
         gameObject.SetActive(false);
+    }
+
+    void AddEnemyCount()
+    {
+        _uiManager.EnemiesRemainingAdd(1);
     }
 }
