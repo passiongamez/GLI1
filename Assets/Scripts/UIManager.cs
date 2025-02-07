@@ -16,7 +16,10 @@ public class UIManager : MonoBehaviour
     public int _ammo = 10;
     public int _score = 0;
 
-    WaitForSeconds _reloadSpeed = new WaitForSeconds(3f);
+    WaitForSeconds _reloadSpeed = new WaitForSeconds(2f);
+
+    [SerializeField] AudioClip _reloadSound;
+    [SerializeField] AudioSource _audio;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,13 +28,18 @@ public class UIManager : MonoBehaviour
         {
             uiManager = this;
         }
+
+        _audio = GetComponent<AudioSource>();
+        if (_audio == null)
+        {
+            Debug.Log("audio source is null");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         TimeRemaining();
-        SubtractAmmo();
     }
 
     public void AddScore(int score)
@@ -63,8 +71,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void SubtractAmmo()
+    public void SubtractAmmo(int ammo)
     {
+        _ammo -= ammo;
         _ammoRemaining.text = _ammo.ToString();
         if(_ammo <= 0)
         {
@@ -75,7 +84,9 @@ public class UIManager : MonoBehaviour
 
     IEnumerator Reloading()
     {
+        _audio.PlayOneShot(_reloadSound);
         yield return _reloadSpeed;
         _ammo = 10;
+        _ammoRemaining.text = _ammo.ToString();
     }
 }

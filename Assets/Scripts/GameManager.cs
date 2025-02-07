@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    int _points = 0;
+    [SerializeField] AudioSource _audio;
+    [SerializeField] AudioClip _trackCompleted;
 
-
-    public void AddPoints(int points)
+    public void TrackFinish()
     {
-        _points += points;
+        _audio.PlayOneShot(_trackCompleted);
     }
 }

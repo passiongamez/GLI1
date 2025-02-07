@@ -13,8 +13,12 @@ public class Player : MonoBehaviour
 
     AIBehavior _enemyScript;
     UIManager _uiManager;
+    Sniper _sniper;
 
     Camera _mainCam;
+
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioClip _barrierSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,6 +35,12 @@ public class Player : MonoBehaviour
         {
             Debug.Log("ui manager is null");
         }
+
+        _sniper = GetComponentInChildren<Sniper>();
+        if( _sniper == null)
+        {
+            Debug.Log("Sniper is null");
+        }
     }
 
     // Update is called once per frame
@@ -38,7 +48,8 @@ public class Player : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame && _canFire < Time.time && _uiManager._ammo > 0)
         {
-            _uiManager._ammo -= 1;
+            _uiManager.SubtractAmmo(1);
+            _sniper.PlayGunShot();
             Fire();
         }
 
@@ -81,6 +92,10 @@ public class Player : MonoBehaviour
 
                 // Call the Death function on the enemy, which could trigger enemy death behavior
                 _enemyScript.Death();
+            }
+            if(_hitInfo.collider.tag == "Barrier")
+            {
+                _audioSource.PlayOneShot(_barrierSound);
             }
         }
     }

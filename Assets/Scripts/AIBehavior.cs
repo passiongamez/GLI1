@@ -39,6 +39,9 @@ public class AIBehavior : MonoBehaviour
     Collider _collider;
     Animator _animator;
 
+   [SerializeField] AudioSource _audio;
+    [SerializeField] AudioClip _trackCompleted;
+
 
     private void OnEnable()
     {
@@ -151,6 +154,7 @@ public class AIBehavior : MonoBehaviour
     {
         if(other.tag == "End")
         {
+            _gameManager.TrackFinish();
             _agent.enabled = false;
             _uiManager.EnemiesRemainingMinus(1);
             gameObject.SetActive(false);
@@ -215,6 +219,7 @@ public class AIBehavior : MonoBehaviour
 
     IEnumerator DeathWait()
     {
+        _audio.Play();
         yield return new WaitForSeconds(3f);
         _uiManager.EnemiesRemainingMinus(1);
         gameObject.SetActive(false);
