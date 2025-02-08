@@ -44,6 +44,8 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log("game manager is null");
         }
+
+        _ammoRemaining.text = 10.ToString();
     }
 
     // Update is called once per frame
@@ -106,7 +108,7 @@ public class UIManager : MonoBehaviour
         _audio.PlayOneShot(_reloadSound);
         yield return _reloadSpeed;
         _ammo = 10;
-        _ammoRemaining.text = _ammo.ToString();
+        _ammoRemaining.text = 10.ToString();
     }
 
     public void VictoryTextOn()

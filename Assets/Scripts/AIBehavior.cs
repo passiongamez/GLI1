@@ -29,6 +29,7 @@ public class AIBehavior : MonoBehaviour
     [SerializeField] bool _isRunning = true;
     [SerializeField] bool _isHiding = false;
     [SerializeField] bool _isDead = false;
+    bool _reachedPath = false;
 
     WaitForSeconds _hideTime = new WaitForSeconds(3);
 
@@ -40,7 +41,6 @@ public class AIBehavior : MonoBehaviour
     Animator _animator;
 
    [SerializeField] AudioSource _audio;
-    [SerializeField] AudioClip _trackCompleted;
 
 
     private void OnEnable()
@@ -77,11 +77,12 @@ public class AIBehavior : MonoBehaviour
             Debug.Log("ui manager is null");
 
         }
+        gameObject.transform.position = _spawnPos.position;
         _currentPath = 0;
         _agent.enabled = false;
         _isRunning = true;
+        _currentState = AIStates.Run;
         AddEnemyCount();
-        gameObject.transform.position = _spawnPos.position;
     }
 
 
@@ -132,6 +133,7 @@ public class AIBehavior : MonoBehaviour
                     Debug.Log("Enemy has died");
                     _animator.SetTrigger("Death");
                     _animator.SetBool("Hiding", false);
+                    _animator.SetFloat("Speed", 0f);
                 }
                 _isRunning = false;
                 _isHiding = false;
@@ -145,7 +147,7 @@ public class AIBehavior : MonoBehaviour
         _agent.enabled = true;
         _agent.speed = UnityEngine.Random.Range(4f, 8f);
         _agent.destination = _path[_currentPath].position;
-        if (_agent.remainingDistance < .5f)
+        if (_agent.remainingDistance <= .5f && _reachedPath == true)
         {
             _currentPath += 1;
         }
@@ -161,6 +163,11 @@ public class AIBehavior : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+        if(other.tag == "Waypoint")
+        {
+            _reachedPath = true;
+        }
+
         if(other.tag == "Barrier")
         {
             _column = other.GetComponent<Column>();
@@ -172,6 +179,14 @@ public class AIBehavior : MonoBehaviour
                 HideDecision();
         }
 
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Waypoint")
+        {
+            _reachedPath = false;
+        }
     }
 
     void HideDecision()
@@ -209,12 +224,12 @@ public class AIBehavior : MonoBehaviour
     public void Death()
     {
         _uiManager.AddScore(50);
+        _agent.enabled = false;
         _collider.enabled = false;
+        _currentState = AIStates.Death;
         _isDead = true;
         _isRunning = false;
         _isHiding = false;
-        _currentState = AIStates.Death;
-        _agent.enabled = false;
         StartCoroutine(DeathWait());
     }
 
@@ -223,6 +238,7 @@ public class AIBehavior : MonoBehaviour
         _audio.Play();
         yield return new WaitForSeconds(3f);
         _uiManager.EnemiesRemainingMinus(1);
+        _audio.enabled = false;
         gameObject.SetActive(false);
     }
 
