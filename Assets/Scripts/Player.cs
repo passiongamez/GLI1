@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource _audioSource;
     [SerializeField] AudioClip _barrierSound;
 
+    Column _column;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -98,6 +100,11 @@ public class Player : MonoBehaviour
             if(_hitInfo.collider.tag == "Barrier")
             {
                 _audioSource.PlayOneShot(_barrierSound);
+                _column = _hitInfo.collider.GetComponent<Column>();
+                if(_column != null)
+                {
+                    _column.DamageColumn();
+                }
             }
 
             if(_hitInfo.collider.tag == "Barrel")
