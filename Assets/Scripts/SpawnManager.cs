@@ -29,7 +29,12 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_spawnRate < Time.time)
+
+    }
+
+    public void Spawner()
+    {
+        if (_spawnRate < Time.time)
         {
             _spawnRate += Time.time + _spawnDelay;
             Debug.Log("Spawning");
@@ -37,12 +42,12 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnEnemies()
+    public IEnumerator SpawnEnemies()
     {
         while(true)
         {
-            SearchForEnemy();
-            yield return _spawnTime;
+                SearchForEnemy();
+                yield return _spawnTime;
         }
     }
 
@@ -55,7 +60,11 @@ public class SpawnManager : MonoBehaviour
                 enemy.SetActive(true);
                 return;
             }
-
         }
+    }
+
+    public void StopEnemyRoutine()
+    {
+        StopCoroutine(SpawnEnemies());
     }
 }

@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _enemiesRemaining;
     [SerializeField] TextMeshProUGUI _timeRemaining;
     [SerializeField] TextMeshProUGUI _ammoRemaining;
+    [SerializeField] TextMeshProUGUI _victoryText;
+    [SerializeField] TextMeshProUGUI _gameOverText;
 
     float _timer = 300;
     public int _enemies = 0;
@@ -20,6 +22,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] AudioClip _reloadSound;
     [SerializeField] AudioSource _audio;
+
+    GameManager _gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,12 +38,27 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log("audio source is null");
         }
+
+        _gameManager = FindFirstObjectByType<GameManager>();
+        if (_gameManager == null)
+        {
+            Debug.Log("game manager is null");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         TimeRemaining();
+
+        if(_score == 5000)
+        {
+            _gameManager.VictoryEndGame();
+        }
+        else if(_timer <= 0)
+        {
+            _gameManager.LossEndGame();
+        }
     }
 
     public void AddScore(int score)
@@ -88,5 +107,15 @@ public class UIManager : MonoBehaviour
         yield return _reloadSpeed;
         _ammo = 10;
         _ammoRemaining.text = _ammo.ToString();
+    }
+
+    public void VictoryTextOn()
+    {
+        _victoryText.gameObject.SetActive(true);
+    }
+
+    public void GameOverText()
+    {
+        _gameOverText.gameObject.SetActive(true);
     }
 }

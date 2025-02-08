@@ -77,6 +77,7 @@ public class AIBehavior : MonoBehaviour
             Debug.Log("ui manager is null");
 
         }
+        _currentPath = 0;
         _agent.enabled = false;
         _isRunning = true;
         AddEnemyCount();
@@ -228,5 +229,12 @@ public class AIBehavior : MonoBehaviour
     void AddEnemyCount()
     {
         _uiManager.EnemiesRemainingAdd(1);
+    }
+
+    public void ExplosionDeath()
+    {
+        _uiManager.AddScore(50);
+        _uiManager.EnemiesRemainingMinus(-1);
+        gameObject.SetActive(false);
     }
 }
