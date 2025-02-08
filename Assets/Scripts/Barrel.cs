@@ -22,12 +22,15 @@ public class Barrel : MonoBehaviour
    public void ExplosionOccurence()
     {
         Collider[] hitCollider = Physics.OverlapSphere(_explosion.transform.position, 7f);
-        foreach(Collider collider in hitCollider)
+        //Debug.Log(hitCollider.Length);
+        foreach (Collider collider in hitCollider)
         {
+            Debug.Log(collider.name + collider.tag);
             if(collider.tag == "Enemy")
             {
+                //Debug.Log("enemy tag found");
                _behavior = collider.GetComponent<AIBehavior>();
-                Debug.Log("found ai script");
+                //Debug.Log("found ai script");
                 if(_behavior != null)
                 {
                     _behavior.ExplosionDeath();
