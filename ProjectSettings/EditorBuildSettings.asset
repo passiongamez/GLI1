@@ -6,8 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/scifi duck hunt.unity
-    guid: 8124e5870f4fd4c779e7a5f994e84ad1
+    path: Assets/GameDevHQ/FileBase/Projects/Tutorials/Starter_Files/Game_Logic_Interactions_1/Scenes/GLI_1.unity
+    guid: 5d7e0e444d29e47b998a96108dc107c1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 4e89b696bc8afc84d845b8f30add7915, type: 2}
   m_UseUCBPForAssetBundles: 0

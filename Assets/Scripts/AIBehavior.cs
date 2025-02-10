@@ -250,7 +250,7 @@ public class AIBehavior : MonoBehaviour
     public void ExplosionDeath()
     {
         _uiManager.AddScore(50);
-        _uiManager.EnemiesRemainingMinus(-1);
+        _uiManager.EnemiesRemainingMinus(1);
         gameObject.SetActive(false);
     }
 }

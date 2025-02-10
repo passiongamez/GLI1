@@ -1,6 +1,7 @@
 using GameDevHQ.FileBase.Plugins.FPS_Character_Controller;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,6 +40,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            Application.Quit();
+        }
+
         if(_isGameOver == false)
         {
             GameStart();
