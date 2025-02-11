@@ -1556,9 +1556,9 @@ GameObject:
   - component: {fileID: 1948499376550253204}
   - component: {fileID: 4787610343117743206}
   - component: {fileID: 2006552022485788402}
-  - component: {fileID: 1451474492143222857}
   - component: {fileID: 2204925383202385443}
   - component: {fileID: 6667460359484371942}
+  - component: {fileID: 3504738895818519989}
   m_Layer: 7
   m_Name: Monster_99
   m_TagString: Enemy
@@ -1656,7 +1656,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5843113372050523141}
   m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 0
@@ -1669,27 +1669,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 13
   m_ObstacleAvoidanceType: 4
---- !u!65 &1451474492143222857
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5843113372050523141}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1.86, z: 1}
-  m_Center: {x: 0, y: 0.89, z: 0}
 --- !u!54 &2204925383202385443
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1814,6 +1793,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &3504738895818519989
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5843113372050523141}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &5968755442158394926
 GameObject:
   m_ObjectHideFlags: 0

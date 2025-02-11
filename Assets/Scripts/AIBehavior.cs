@@ -212,8 +212,10 @@ public class AIBehavior : MonoBehaviour
 
     IEnumerator WaitAtColumn()
     {
+        _agent.speed = 0;
         Vector3.MoveTowards(transform.position, _currentColumn.position + new Vector3(1f, 0, -1f), 2f);
         yield return _hideTime;
+        _agent.speed = 3.5f;
         _isHiding = false;
         _agent.enabled = true;
         _currentState = AIStates.Run;
